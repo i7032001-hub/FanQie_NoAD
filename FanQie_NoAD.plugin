@@ -3,9 +3,9 @@
 #!author=ChatGPT
 
 [Rewrite]
-# 启动广告
+# 启动广告 - 移除启动广告
 ^https?:\/\/.*\/api\/ad\/ REJECT
-# 商业信息
+# 商业信息 - 移除所有商业广告
 ^https?:\/\/.*\/commercial\/ REJECT
 # 激励视频 - 仿装已完成并跳过
 ^https?:\/\/.*\/reward\/video\/ REJECT-200
@@ -19,9 +19,18 @@
 ^https?:\/\/.*\/ad\/display\/ REJECT-200
 # 曝光广告 - 曝光广告接口
 ^https?:\/\/mkt-advertisement\.tuhu\.cn\/ext\/advertisement\/bytedancev2\/expose\?advertiser_id=.*&androidid=__ANDROID__&caid=.* REJECT
-
 # 激励广告按钮点击跳过
 ^https?:\/\/.*\/reward\/button\/ REJECT-200
+# 直播间广告 - 屏蔽广告类型
+^https?:\/\/.*\/live\/ad\/ REJECT-200
+# 直播广告 - 跳过直播广告
+^https?:\/\/.*\/live\/video\/ REJECT-200
+# 首页插播广告 - 移除首页插播广告
+^https?:\/\/.*\/ad\/show\/ REJECT-200
+# 二次确认广告 - 移除弹窗确认广告
+^https?:\/\/.*\/ad\/confirm\/ REJECT-200
+# 直播广告 URL 列表
+^https?:\/\/.*\/api\/ad\/show\/ REJECT-200
 
 [MITM]
 hostname = %APPEND% fqnovel.com, fqnovelpic.com
