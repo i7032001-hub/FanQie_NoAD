@@ -1,5 +1,5 @@
 #!name=番茄小说 去广告（完整版）
-#!desc=去启动页/阅读页广告，跳过激励视频，不影响正常功能
+#!desc=去启动页/阅读页广告，跳过激励视频，屏蔽直播广告
 #!author=ChatGPT
 
 [Rewrite]
@@ -11,6 +11,9 @@
 
 # 激励视频 - 伪装已完成
 ^https?:\/\/.*\/reward\/video\/ REJECT-200
+
+# 直播广告 - 屏蔽直播类广告接口
+^https?:\/\/.*\/live\/ad\/ REJECT-200
 
 [MITM]
 hostname = %APPEND% fqnovel.com, fqnovelpic.com
