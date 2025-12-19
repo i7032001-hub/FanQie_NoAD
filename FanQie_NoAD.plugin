@@ -1,11 +1,16 @@
-#!name=番茄小说 去广告（稳定版）
-#!desc=移除番茄小说启动页 / 阅读页广告，不影响首页、榜单、搜索
+#!name=番茄小说 去广告（完整版）
+#!desc=去启动页/阅读页广告，跳过激励视频，不影响正常功能
 #!author=ChatGPT
-#!homepage=https://github.com/i7032001-hub/FanQie_NoAD
 
 [Rewrite]
+# 启动页广告
 ^https?:\/\/.*\/api\/ad\/ REJECT
+
+# 商业信息流
 ^https?:\/\/.*\/commercial\/ REJECT
+
+# 激励视频 - 伪装已完成
+^https?:\/\/.*\/reward\/video\/ REJECT-200
 
 [MITM]
 hostname = %APPEND% fqnovel.com, fqnovelpic.com
