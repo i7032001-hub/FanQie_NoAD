@@ -1,36 +1,58 @@
-#!name=番茄小说 去广告 (直播广告拦截版)
-#!desc=去除番茄小说广告，跳过激励视频，屏蔽直播广告，拦截插播广告
+#!name=番茄小说 去广告（直播广告拦截版）
+#!desc=去除番茄广告，跳过激励视频，屏蔽直播广告，拦截插播广告
 #!author=ChatGPT
 
 [Rewrite]
-# 启动广告 - 移除启动广告
-^https?:\/\/.*\/api\/ad\/ REJECT
-# 商业信息 - 移除所有商业广告
-^https?:\/\/.*\/commercial\/ REJECT
-# 激励视频 - 仿装已完成并跳过
-^https?:\/\/.*\/reward\/video\/ REJECT-200
-# 直播广告 - 屏蔽直播广告接口
-^https?:\/\/.*\/live\/ad\/ REJECT-200
+# 启动广告 — 移除启动广告
+^https?:\/\/\/.*\/api\/ad\/ REJECT
+# 商业信息 — 移除商业广告
+^https?:\/\/\/.*\/commercial\/ REJECT
+# 激励视频 — 仿装已完成并跳过
+^https?:\/\/\/.*\/reward\/video\/ REJECT-200
+# 直播广告 — 屏蔽直播广告接口
+^https?:\/\/\/.*\/live\/ad\/ REJECT-200
 # 屏蔽直播视频广告接口
-^https?:\/\/.*\/live\/video\/ad\/ REJECT-200
-# 插播广告 - 屏蔽插播广告接口
-^https?:\/\/.*\/interstitial\/ad\/ REJECT-200
-# 广告组件 - 屏蔽广告展示组件
-^https?:\/\/.*\/ad\/display\/ REJECT-200
-# 曝光广告 - 曝光广告接口
-^https?:\/\/mkt-advertisement\.tuhu\.cn\/ext\/advertisement\/bytedancev2\/expose\?advertiser_id=.*&androidid=__ANDROID__&caid=.* REJECT
+^https?:\/\/\/.*\/live\/video\/ad\/ REJECT-200
+# 插播广告 — 屏蔽插播广告接口
+^https?:\/\/\/.*\/interstitial\/ad\/ REJECT-200
+# 广告组件 — 屏蔽广告展示组件
+^https?:\/\/\/.*\/ad\/display\/ REJECT-200
+# 曝光广告 — 曝光广告接口
+^https?:\/\/\/mkt-advertisement.tuhu\.cn\/ext\/advertisement\/ REJECT
 # 激励广告按钮点击跳过
-^https?:\/\/.*\/reward\/button\/ REJECT-200
-# 直播间广告 - 屏蔽广告类型
-^https?:\/\/.*\/live\/ad\/ REJECT-200
-# 直播广告 - 跳过直播广告
-^https?:\/\/.*\/live\/video\/ REJECT-200
-# 首页插播广告 - 移除首页插播广告
-^https?:\/\/.*\/ad\/show\/ REJECT-200
-# 二次确认广告 - 移除弹窗确认广告
-^https?:\/\/.*\/ad\/confirm\/ REJECT-200
+^https?:\/\/\/.*\/reward\/button\/ REJECT-200
+# 直播间广告类型
+^https?:\/\/\/.*\/live\/ad\/ REJECT-200
+# 直播广告 — 跳过直播广告
+^https?:\/\/\/.*\/live\/video\/ REJECT-200
+# 首页插播广告 — 移除首页插播广告
+^https?:\/\/\/.*\/ad\/show\/ REJECT-200
+# 二次确认广告 — 移除弹窗确认广告
+^https?:\/\/\/.*\/ad\/confirm\/ REJECT-200
 # 直播广告 URL 列表
-^https?:\/\/.*\/api\/ad\/show\/ REJECT-200
+^https?:\/\/\/.*\/api\/ad\/show\/ REJECT-200
+
+# 以下是额外添加的规则
+# 启动广告 — 移除启动广告
+^https?:\/\/\/.*\/api\/ad\/ REJECT
+# 激励广告 — 跳过激励视频广告
+^https?:\/\/\/.*\/reward\/video\/ REJECT-200
+# 直播广告 — 屏蔽直播广告接口
+^https?:\/\/\/.*\/live\/ad\/ REJECT-200
+# 插播广告 — 屏蔽插播广告接口
+^https?:\/\/\/.*\/interstitial\/ad\/ REJECT-200
+# 广告组件 — 屏蔽广告展示组件
+^https?:\/\/\/.*\/ad\/display\/ REJECT-200
+# 曝光广告 — 曝光广告接口
+^https?:\/\/\/mkt-advertisement.tuhu\.cn\/ext\/advertisement\/ REJECT
+# 激励广告按钮点击跳过
+^https?:\/\/\/.*\/reward\/button\/ REJECT-200
+# 跳过激励广告
+^https?:\/\/\/.*\/reward\/video\/ REJECT-200
+# 直播广告接口
+^https?:\/\/\/.*\/live\/video\/ad\/ REJECT-200
+# 首页插播广告
+^https?:\/\/\/.*\/ad\/show\/ REJECT-200
 
 [MITM]
 hostname = %APPEND% fqnovel.com, fqnovelpic.com
