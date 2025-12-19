@@ -1,0 +1,6 @@
+#!name=番茄小说 去广告（fqnovel 专用）
+#!desc=仅处理 fqnovel.com 接口，不影响抖音
+#!author=i7032001
+
+[Script]
+http-response ^https?:\/\/mon\d+-misc-.*\.fqnovel\.com\/.* script-path=https://raw.githubusercontent.com/i7032001-hub/FanQie_NoAD/main/fanqie_remove_ad.js, requires-body=true, timeout=10
