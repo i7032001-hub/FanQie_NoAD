@@ -1,31 +1,24 @@
-#!name=番茄小说 去广告（直播广告拦截版）
-#!desc=去启动页/阅读页广告，跳过激励视频，屏蔽直播广告，拦截插播广告，屏蔽广告组件
+#!name=番茄小说 去广告 (直播广告拦截版)
+#!desc=去除番茄小说广告，跳过激励视频，屏蔽直播广告，拦截插播广告
 #!author=ChatGPT
 
 [Rewrite]
-# 启动页广告
+# 启动广告
 ^https?:\/\/.*\/api\/ad\/ REJECT
-
-# 商业信息流
+# 商业信息
 ^https?:\/\/.*\/commercial\/ REJECT
-
-# 激励视频 - 伪装已完成并跳过
+# 激励视频 - 仿装已完成并跳过
 ^https?:\/\/.*\/reward\/video\/ REJECT-200
-
-# 直播广告 - 屏蔽直播类广告接口
+# 直播广告 - 屏蔽直播广告接口
 ^https?:\/\/.*\/live\/ad\/ REJECT-200
-
-# 直播广告 - 屏蔽直播视频广告接口
+# 屏蔽直播视频广告接口
 ^https?:\/\/.*\/live\/video\/ad\/ REJECT-200
-
-# 插播广告 - 伪装已结束
+# 插播广告 - 屏蔽插播广告接口
 ^https?:\/\/.*\/interstitial\/ad\/ REJECT-200
-
 # 广告组件 - 屏蔽广告展示组件
 ^https?:\/\/.*\/ad\/display\/ REJECT-200
-
-# 曝光广告 - 屏蔽广告曝光接口
-^https?:\/\/mkt-advertisement\.tuhu\.cn\/ext\/advertisement\/bytedancev2\/expose\/ REJECT-200
+# 曝光广告 - 曝光广告接口
+^https?:\/\/mkt-advertisement\.tuhu\.cn\/ext\/advertisement\/bytedancev2\/expose\?advertiser_id=.*&androidid=__ANDROID__&caid=.* REJECT
 
 # 激励广告按钮点击跳过
 ^https?:\/\/.*\/reward\/button\/ REJECT-200
