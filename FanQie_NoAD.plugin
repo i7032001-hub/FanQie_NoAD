@@ -1,12 +1,7 @@
-#!name=番茄小说 去广告
-#!desc=移除番茄小说启动页/阅读页广告，不影响抖音
+#!name=番茄小说 去广告（稳定版）
+#!desc=移除番茄小说启动页 / 阅读页广告，不影响首页、榜单、搜索
 #!author=ChatGPT
-#!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Book.png
 #!homepage=https://github.com/i7032001-hub/FanQie_NoAD
-
-[Rule]
-DOMAIN-SUFFIX,fqnovel.com,REJECT
-DOMAIN-SUFFIX,fqnovelpic.com,REJECT
 
 [Rewrite]
 ^https?:\/\/.*\/api\/ad\/ REJECT
