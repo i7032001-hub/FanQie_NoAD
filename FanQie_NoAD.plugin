@@ -1,5 +1,5 @@
-#!name=番茄小说 去广告（终极版）
-#!desc=去启动页/阅读页广告，跳过激励视频，屏蔽直播广告，拦截插播广告，屏蔽广告组件，拦截曝光广告
+#!name=番茄小说 去广告（终极拦截）
+#!desc=去启动页/阅读页广告，跳过激励视频，屏蔽直播广告，拦截插播广告，屏蔽广告组件，彻底屏蔽激励视频
 #!author=ChatGPT
 
 [Rewrite]
@@ -9,7 +9,7 @@
 # 商业信息流
 ^https?:\/\/.*\/commercial\/ REJECT
 
-# 激励视频 - 伪装已完成
+# 激励视频 - 伪装已完成并跳过
 ^https?:\/\/.*\/reward\/video\/ REJECT-200
 
 # 直播广告 - 屏蔽直播类广告接口
@@ -23,6 +23,9 @@
 
 # 曝光广告 - 屏蔽广告曝光接口
 ^https?:\/\/mkt-advertisement\.tuhu\.cn\/ext\/advertisement\/bytedancev2\/expose\/ REJECT-200
+
+# 激励广告按钮点击跳过
+^https?:\/\/.*\/reward\/button\/ REJECT-200
 
 [MITM]
 hostname = %APPEND% fqnovel.com, fqnovelpic.com
